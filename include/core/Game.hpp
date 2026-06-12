@@ -1,8 +1,9 @@
 #pragma once
-#include "Player.hpp"
+#include "entities/Player.hpp"
 #include <SFML/Graphics.hpp>
 
-class Game {
+class Game
+{
 public:
   Game();
   void run();
@@ -15,4 +16,9 @@ private:
   sf::RenderWindow m_window;
   Player m_player;
   sf::Clock m_clock;
+
+  // Debug
+  bool m_showDebug;
+  sf::Font m_debugFont;
+  sf::Text m_debugText;
 };

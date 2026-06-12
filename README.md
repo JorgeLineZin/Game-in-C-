@@ -10,6 +10,7 @@
 | -------------------- | ------------------- |
 | 'WASD' or '↑ ↓ ← →'  | Move the player     |
 | `Shift` (left/right) | Run (doubled speed) |
+| `P`                  | Debug painel        |
 | `Close window`       | Exit the game       |
 
 ## To compile and run
@@ -32,12 +33,20 @@ make
 ## 📁 Project Structure
 
 ```bash
-│
 ├── CMakeLists.txt
+├── include/
+│   ├── core/
+│   │   └── Game.hpp
+│   └── entities/
+│       └── Player.hpp
 ├── src/
 │   ├── main.cpp
-│   ├── Game.cpp/hpp
-│   ├── Player.cpp/hpp
-├── README.md
-└── .gitignore
+│   ├── core/
+│   │   └── Game.cpp
+│   └── entities/
+│       └── Player.cpp
+├── assets/
+│   └── fonts/
+│       └── LiberationSans-Regular.ttf
+└── README.md
 ```
