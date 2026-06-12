@@ -1,0 +1,42 @@
+# Compilação e objetos
+*.o
+*.obj
+*.exe
+*.out
+*.app
+
+# Diretórios de build (CMake)
+build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Arquivos temporários do editor
+*~
+*.swp
+*.swo
+.DS_Store
+*.user
+*.userprefs
+
+# IDE (VSCode, CLion, etc.)
+.vscode/
+.idea/
+*.code-workspace
+
+# Arquivos de log e desempenho
+*.log
+*.trace
+*.gcov
+*.gcda
+*.gcno
+
+# Dependências locais (caso coloque SFML dentro do projeto)
+/sfml/
+/SFML-*/
+
+# Executável gerado (ajuste conforme o nome do seu programa)
+MeuJogoSFML
