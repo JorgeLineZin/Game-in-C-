@@ -1,7 +1,10 @@
 #pragma once
+#include "entities/Projectile.hpp"
 #include <SFML/Graphics.hpp>
+#include <vector>
 
-class Player {
+class Player
+{
 public:
   Player(float radius, sf::Color color, const sf::Vector2f &startPosition);
   void handleInput(float deltaTime);
@@ -11,10 +14,16 @@ public:
   sf::Vector2f getPosition() const;
   sf::Vector2f getRealVelocity() const;
   float getRadius() const;
+  void shoot();
+  void updateProjectiles(float deltaTime, const sf::Vector2u &windowSize);
+  void drawProjectiles(sf::RenderWindow &window) const;
+  const std::vector<Projectile> &getProjectiles() const;
 
 private:
   sf::CircleShape m_shape;
   sf::Vector2f m_velocity;
   float m_speed;
   float m_speedMultiplier;
+  float m_fireCooldown;
+  std::vector<Projectile> m_projectiles;
 };

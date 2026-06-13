@@ -12,6 +12,7 @@ set(GAME_SOURCES
   src/main.cpp
   src/core/Game.cpp
   src/entities/Player.cpp
+  src/entities/Projectile.cpp
 )
 
 add_executable(MyGameSFML)

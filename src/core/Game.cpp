@@ -53,11 +53,27 @@ void Game::update(float deltaTime)
   m_player.update(deltaTime, m_window.getSize());
 }
 
+namespace
+{
+  void drawHitbox(sf::RenderWindow &window, const sf::Vector2f &position,
+                  float radius, sf::Color color = sf::Color::Red)
+  {
+    sf::CircleShape hitbox(radius);
+    hitbox.setPosition(position);
+    hitbox.setOrigin({radius, radius});
+    hitbox.setFillColor(sf::Color::Transparent);
+    hitbox.setOutlineColor(color);
+    hitbox.setOutlineThickness(2.f);
+    window.draw(hitbox);
+  }
+} // namespace
+
 void Game::render()
 {
   m_window.clear();
 
   m_player.draw(m_window);
+  m_player.drawProjectiles(m_window);
 
   // Painel de debug
   if (m_showDebug)
@@ -72,7 +88,8 @@ void Game::render()
                 std::to_string(vel.y) + ") px/s\n";
     debugStr += "Velocidade (magnitude): " +
                 std::to_string(std::sqrt(vel.x * vel.x + vel.y * vel.y)) +
-                " px/s";
+                " px/s\n";
+    debugStr += "Projeteis: " + std::to_string(m_player.getProjectiles().size());
 
     m_debugText.setString(debugStr);
 
@@ -85,13 +102,14 @@ void Game::render()
 
     m_window.draw(m_debugText);
 
-    sf::CircleShape hitbox(m_player.getRadius());
-    hitbox.setPosition(m_player.getPosition());
-    hitbox.setOrigin({m_player.getRadius(), m_player.getRadius()});
-    hitbox.setFillColor(sf::Color::Transparent);
-    hitbox.setOutlineColor(sf::Color::Red);
-    hitbox.setOutlineThickness(2.f);
-    m_window.draw(hitbox);
+    drawHitbox(m_window, m_player.getPosition(), m_player.getRadius(),
+               sf::Color::Red);
+
+    for (const auto &projectile : m_player.getProjectiles())
+    {
+      drawHitbox(m_window, projectile.getPosition(), projectile.getRadius(),
+                 sf::Color::Yellow);
+    }
   }
 
   m_window.display();
