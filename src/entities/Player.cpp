@@ -31,7 +31,8 @@ void Player::handleInput(float deltaTime)
       sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
     m_velocity.x += 1.f;
 
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && m_fireCooldown <= 0.f)
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && m_fireCooldown <= 0.f ||
+      sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && m_fireCooldown <= 0.f)
   {
     shoot();
     m_fireCooldown = 0.55f;

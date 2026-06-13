@@ -10,7 +10,7 @@
 | -------------------- | ------------------- |
 | 'WASD' or '↑ ↓ ← →'  | Move the player     |
 | `Shift` (left/right) | Run (doubled speed) |
-| `Space`              | Shoot projects      |
+| `Space` or `Mouse 1` | Shoot projects      |
 | `P`                  | Debug painel        |
 | `Close window`       | Exit the game       |
 
